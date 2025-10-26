@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}</title>
+    <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/samimifar/worldwithoutlimit@main/user-solid.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/misc/Farsi-Digits/Vazirmatn-FD-font-face.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151932;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-hover: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-disabled: #718096;
+            --accent-blue: #4299e1;
+            --accent-green: #48bb78;
+            --accent-orange: #ed8936;
+            --accent-red: #f56565;
+            --accent-purple: #9f7aea;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-6: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            --gradient-7: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --gradient-8: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn FD', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            animation: move 25s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        .bg-animation span:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation span:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .bg-animation span:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .bg-animation span:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .bg-animation span:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation span:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .bg-animation span:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .bg-animation span:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .bg-animation span:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .bg-animation span:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 50%;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Bar - Compact and Cool */
+        .header-bar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, rgba(102, 126, 234, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+            }
+        }
+
+        .app-name {
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* User Info - Compact Design */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        /* Username Container */
+        .username-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .username {
+            font-size: 16px;
+            font-weight: 600;
+            direction: ltr;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 120px;
+            transition: all 0.3s ease;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .username:hover {
+            transform: scale(1.05);
+        }
+
+        /* Copy Guide */
+        .copy-guide {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+            z-index: 10;
+        }
+
+        .username-container:hover .copy-guide {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .copy-guide.copied {
+            background: var(--gradient-4);
+        }
+
+        .user-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .user-status.active {
+            background: rgba(72, 187, 120, 0.2);
+            color: var(--accent-green);
+        }
+
+        .user-status.limited {
+            background: rgba(237, 137, 54, 0.2);
+            color: var(--accent-orange);
+        }
+
+        .user-status.expired {
+            background: rgba(245, 101, 101, 0.2);
+            color: var(--accent-red);
+        }
+
+        .user-status.disabled {
+            background: rgba(113, 128, 150, 0.2);
+            color: var(--text-disabled);
+        }
+
+        /* User Avatar - Cool Design */
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .user-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .user-avatar:hover::before {
+            opacity: 1;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .stat-title-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .stat-icon.traffic {
+            background: var(--gradient-3);
+        }
+
+        .stat-icon.time {
+            background: var(--gradient-4);
+        }
+
+        .stat-icon.speed {
+            background: var(--gradient-5);
+        }
+
+        .stat-icon.ip {
+            background: var(--gradient-6);
+        }
+
+        .stat-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-top: 12px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-3);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Speed Test Section */
+        .speed-test-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .speed-test-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .speed-test-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .speed-test-btn {
+            background: var(--gradient-3);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+        }
+
+        .speed-test-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(79, 172, 254, 0.6);
+        }
+
+        .speed-test-btn:active {
+            transform: translateY(0);
+        }
+
+        .speed-test-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .speed-test-btn.loading i {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .speed-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .speed-result-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .speed-result-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .speed-result-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .speed-result-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .speed-result-value.excellent {
+            color: #48bb78;
+        }
+
+        .speed-result-value.good {
+            color: #68d391;
+        }
+
+        .speed-result-value.average {
+            color: #f6e05e;
+        }
+
+        .speed-result-value.poor {
+            color: #ed8936;
+        }
+
+        .speed-result-value.bad {
+            color: #f56565;
+        }
+
+        .speed-result-unit {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .speed-test-status {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            height: 16px;
+        }
+
+        /* Subscription Section */
+        .subscription-section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .subscription-url-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .subscription-url {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-family: monospace;
+            direction: ltr;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .action-button {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--gradient-3);
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+        }
+
+        .action-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(79, 172, 254, 0.6);
+        }
+
+        .action-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 6px;
+            margin-bottom: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 14px;
+            text-align: center;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .nav-tab.active {
+            background: var(--gradient-3);
+            color: white;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+        }
+
+        .nav-tab:not(.active):hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Server List */
+        .server-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Copy All Button */
+        .copy-all-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-all-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
+        }
+
+        .copy-all-button:active {
+            transform: translateY(-2px);
+        }
+
+        .copy-all-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .copy-all-button:hover::before {
+            left: 100%;
+        }
+
+        .copy-all-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .copy-all-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .copy-all-details {
+            flex: 1;
+        }
+
+        .copy-all-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .copy-all-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Server Item */
+        .server-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .server-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .server-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-3);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .server-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .server-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--gradient-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+            flex-shrink: 0;
+        }
+
+        .server-details {
+            flex: 1;
+        }
+
+        .server-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .server-info {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* App List */
+        .app-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .app-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .app-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .app-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Fixed logos - Corrected */
+        .app-icon.happ {
+            background-image: url('https://avatars.githubusercontent.com/u/195639782?s=200&v=4');
+        }
+
+        .app-icon.hiddify {
+            background-image: url('https://user-images.githubusercontent.com/125398461/227777845-a4d0f86b-faa2-4f2b-a410-4aa5f68bfe19.png');
+        }
+
+        .app-name {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Buttons */
+        .primary-button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            background: var(--gradient-3);
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+        }
+
+        .primary-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(79, 172, 254, 0.6);
+        }
+
+        .primary-button:active {
+            transform: translateY(0);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 320px;
+            width: 90%;
+            position: relative;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--glass-border);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 24px 0;
+        }
+
+        /* App Links Modal */
+        .app-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .app-link-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .app-link-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .app-link-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .app-link-icon.android {
+            background: var(--gradient-4);
+        }
+
+        .app-link-icon.ios {
+            background: var(--gradient-3);
+        }
+
+        .app-link-icon.windows {
+            background: var(--gradient-6);
+        }
+
+        .app-link-icon.macos {
+            background: var(--gradient-7);
+        }
+
+        .app-link-icon.linux {
+            background: var(--gradient-8);
+        }
+
+        .app-link-icon.tv {
+            background: var(--gradient-5);
+        }
+
+        /* Fixed logos in modal - Corrected */
+        .app-link-icon.happ {
+            background-image: url('https://avatars.githubusercontent.com/u/195639782?s=200&v=4');
+        }
+
+        .app-link-icon.hiddify {
+            background-image: url('https://user-images.githubusercontent.com/125398461/227777845-a4d0f86b-faa2-4f2b-a410-4aa5f68bfe19.png');
+        }
+
+        .app-link-name {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Welcome Popup */
+        .welcome-popup {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            z-index: 2000;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            max-width: 90%;
+            width: auto;
+            min-width: 300px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .welcome-popup.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .welcome-popup.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        .welcome-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(240, 147, 251, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .welcome-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .welcome-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-message {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .welcome-username {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .welcome-close {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .welcome-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Copy Feedback */
+        .copy-feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5);
+            z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .copy-feedback.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .copy-feedback.hide {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        .copy-feedback-icon {
+            font-size: 24px;
+            animation: checkmark 0.5s ease;
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0) rotate(-45deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(0deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes copySuccess {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .copy-success {
+            animation: copySuccess 0.5s ease;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 414px) {
+            .container {
+                padding: 24px;
+            }
+            
+            .username {
+                max-width: 140px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+                padding: 32px;
+            }
+            
+            .app-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+            
+            .stat-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 24px;
+            }
+            
+            .action-button {
+                width: 52px;
+                height: 52px;
+            }
+            
+            .speed-test-btn {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+            
+            .primary-button {
+                padding: 20px;
+                font-size: 18px;
+            }
+            
+            .nav-tab {
+                padding: 16px;
+                font-size: 16px;
+            }
+            
+            .app-item {
+                padding: 24px;
+            }
+            
+            .server-item {
+                padding: 20px;
+            }
+            
+            .modal-content {
+                max-width: 400px;
+                padding: 40px;
+            }
+            
+            .welcome-popup {
+                max-width: 80%;
+                padding: 32px;
+            }
+            
+            .welcome-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+            
+            .welcome-title {
+                font-size: 22px;
+            }
+            
+            .welcome-message {
+                font-size: 16px;
+            }
+            
+            .welcome-username {
+                font-size: 17px;
+            }
+            
+            .header-bar {
+                padding: 24px;
+            }
+            
+            .app-name {
+                font-size: 32px;
+            }
+            
+            .username {
+                max-width: 200px;
+                font-size: 20px;
+            }
+        }
+
+        /* Small devices */
+        @media (max-width: 413px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .username {
+                max-width: 100px;
+                font-size: 14px;
+            }
+            
+            .app-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .user-avatar {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+            
+            .stat-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+            
+            .action-button {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .speed-test-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+            
+            .primary-button {
+                padding: 14px;
+                font-size: 15px;
+            }
+            
+            .nav-tab {
+                padding: 12px;
+                font-size: 13px;
+            }
+            
+            .app-item {
+                padding: 16px;
+            }
+            
+            .server-item {
+                padding: 14px;
+            }
+            
+            .copy-guide {
+                font-size: 10px;
+                bottom: -18px;
+                padding: 4px 10px;
+            }
+            
+            .welcome-popup {
+                top: 20px;
+                padding: 20px;
+                max-width: 92%;
+                min-width: 280px;
+                gap: 14px;
+            }
+            
+            .welcome-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 22px;
+            }
+            
+            .welcome-title {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            .welcome-message {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            
+            .welcome-username {
+                font-size: 14px;
+                margin-top: 10px;
+                padding-top: 10px;
+            }
+            
+            .welcome-close {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            
+            .header-bar {
+                padding: 16px;
+            }
+            
+            .app-name {
+                font-size: 24px;
+            }
+            
+            .user-section {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Welcome Popup -->
+    <div class="welcome-popup" id="welcomePopup">
+        <div class="welcome-icon">
+            <i class="fas fa-sparkles"></i>
+        </div>
+        <div class="welcome-content">
+            <div class="welcome-title">درخشش دوباره شما! ✨</div>
+            <div class="welcome-message">از اینکه با ما هستید، بی‌نهایت خوشحالیم 💜</div>
+            <div class="welcome-message">برای دسترسی سریع و بدون قطعی، حتماً لینک ساب خودتون رو به‌روز کنید.</div>
+            <div class="welcome-username">نام کاربری شما : <strong>{{ user.username }}</strong></div>
+        </div>
+        <button class="welcome-close" onclick="hideWelcomePopup()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Header Bar - Compact and Cool -->
+        <div class="header-bar">
+            <div class="header-content">
+                <div class="app-title">
+                    <div class="app-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="app-name">پنل کاربری </div>
+                </div>
+                
+                <div class="user-section">
+                    <div class="user-details">
+                        <div class="username-container" id="usernameContainer">
+                            <div class="username" id="usernameText">{{ user.username }}</div>
+                            <div class="copy-guide" id="copyGuide">برای کپی کلیک کنید</div>
+                        </div>
+                        <div class="user-status {{ user.status }}">
+                            <i class="fas fa-circle" style="font-size: 8px;"></i>
+                            {% if user.status == 'active' %}فعال
+                            {% elif user.status == 'limited' %}پایان ترافیک
+                            {% elif user.status == 'expired' %}منقضی
+                            {% elif user.status == 'disabled' %}مسدود شده
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title-container">
+                        <div class="stat-icon traffic">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="stat-title">ترافیک مصرفی</div>
+                    </div>
+                </div>
+                <div class="stat-value data-usage-text">
+                    {% if user.status == 'limited' %}پایان ترافیک!
+                    {% else %}{{ user.used_traffic | bytesformat }}
+                    {% endif %}
+                </div>
+                {% if user.data_limit %}
+                <div class="stat-subtitle data-usage-text">
+                    {% set remaining_traffic = user.data_limit - user.used_traffic %}
+                    {% if remaining_traffic > 0 %}{{ remaining_traffic | bytesformat }} مانده
+                    {% else %}مجموع: {{ user.data_limit | bytesformat }}
+                    {% endif %}
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        {% set percent = (user.used_traffic / user.data_limit) * 100 %}
+                        {% if percent > 100 %}{% set percent = 100 %}{% endif %}
+                        <div class="progress-fill" style="width: {{ percent }}%"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0%</span>
+                        <span>{{ percent | int }}%</span>
+                    </div>
+                </div>
+                {% else %}
+                <div class="stat-subtitle data-usage-text">حجم کل: نامحدود</div>
+                {% endif %}
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title-container">
+                        <div class="stat-icon time">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-title">زمان باقی‌مانده</div>
+                    </div>
+                </div>
+                <div class="stat-value" id="expirationValue">
+                    {% if user.status == 'expired' %}منقضی شده
+                    {% elif user.expire %}در حال محاسبه...
+                    {% else %}نامحدود
+                    {% endif %}
+                </div>
+                {% if user.expire and user.status != 'expired' %}
+                <div class="stat-subtitle" id="expireDate">در حال محاسبه...</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- IP and Connection Status -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title-container">
+                        <div class="stat-icon ip">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="stat-title">آی‌پی فعلی</div>
+                    </div>
+                </div>
+                <div class="stat-value" id="currentIP">در حال دریافت...</div>
+                <div class="stat-subtitle" id="ipLocation">در حال دریافت...</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title-container">
+                        <div class="stat-icon speed">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="stat-title">وضعیت اتصال</div>
+                    </div>
+                </div>
+                <div class="stat-value" id="connectionStatus">در حال بررسی...</div>
+                <div class="stat-subtitle" id="connectionType">در حال بررسی...</div>
+            </div>
+        </div>
+
+        <!-- Speed Test Section -->
+        <div class="speed-test-section">
+            <div class="speed-test-header">
+                <div class="speed-test-title">
+                    <div class="stat-icon speed">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div>تست سرعت اینترنت</div>
+                </div>
+                <button class="speed-test-btn" id="speedTestBtn" onclick="runSpeedTest()">
+                    <i class="fas fa-play"></i>
+                    شروع تست
+                </button>
+            </div>
+            
+            <div class="speed-results">
+                <div class="speed-result-card">
+                    <div class="speed-result-label">دانلود</div>
+                    <div class="speed-result-value" id="downloadSpeed">--</div>
+                    <div class="speed-result-unit">Mbps</div>
+                </div>
+                <div class="speed-result-card">
+                    <div class="speed-result-label">آپلود</div>
+                    <div class="speed-result-value" id="uploadSpeed">--</div>
+                    <div class="speed-result-unit">Mbps</div>
+                </div>
+            </div>
+            
+            <div class="speed-test-status" id="speedTestStatus"></div>
+        </div>
+
+        <!-- Subscription Section -->
+        <div class="subscription-section">
+            <div class="section-title">
+                <i class="fas fa-link"></i>
+                لینک اشتراک
+            </div>
+            <div class="subscription-url-container">
+                <input type="text" class="subscription-url" value="{{ user.subscription_url }}" readonly>
+                <button class="action-button" onclick="copySubscriptionUrl()">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <button class="action-button" onclick="showQRCode('{{ user.subscription_url }}')">
+                    <i class="fas fa-qrcode"></i>
+                </button>
+            </div>
+        </div>
+
+        {% if user.status in ['expired', 'limited', 'disabled'] %}
+        <button class="primary-button" onclick="openSupport()" style="background: var(--gradient-2);">
+            <i class="fas fa-headset"></i>
+            ارتباط با پشتیبانی
+        </button>
+        {% endif %}
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="switchTab('servers')">
+                <i class="fas fa-server"></i> سرورها
+            </div>
+            <div class="nav-tab" onclick="switchTab('apps')">
+                <i class="fas fa-mobile-alt"></i> اپلیکیشن‌ها
+            </div>
+        </div>
+
+        <!-- Servers Tab -->
+        <div id="servers-tab" class="tab-content active">
+            <div class="server-list" id="proxyList">
+                <!-- Servers will be added here dynamically -->
+            </div>
+        </div>
+
+        <!-- Apps Tab -->
+        <div id="apps-tab" class="tab-content">
+            <div class="app-list">
+                <!-- Happ App -->
+                <div class="app-item" onclick="showAppLinks('happ')">
+                    <div class="app-icon happ"></div>
+                    <div class="app-name">Happ</div>
+                </div>
+                <!-- Hiddify App -->
+                <div class="app-item" onclick="showAppLinks('hiddify')">
+                    <div class="app-icon hiddify"></div>
+                    <div class="app-name">Hiddify</div>
+                </div>
+            </div>
+        </div>
+
+        {% if user.status in ['active', 'on_hold'] %}
+        <button class="primary-button" onclick="openSupport()">
+            <i class="fas fa-headset"></i>
+            ارتباط با پشتیبانی
+        </button>
+        {% endif %}
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideQRCode()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-title">بارکد اشتراک</div>
+            <div id="qrcode"></div>
+        </div>
+    </div>
+
+    <!-- App Links Modal -->
+    <div id="appLinksModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideAppLinks()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-title" id="appLinksTitle">دانلود برنامه</div>
+            <div class="app-links-grid" id="appLinksGrid">
+                <!-- App links will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        const SupportID = ""; // Fill with your support link or keep it blank to hide Support section
+        const userLinks = {{ user.links | tojson }};
+        const userStatus = "{{ user.status }}";
+        const userExpire = {{ user.expire | default(0) }};
+        const subscriptionUrl = "{{ user.subscription_url }}";
+        const username = "{{ user.username }}";
+
+        // App links data
+        const appLinks = {
+            happ: {
+                name: "Happ",
+                platforms: [
+                    { name: "iOS (Global)", icon: "fab fa-apple", class: "ios", url: "https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" },
+                    { name: "iOS (Rus)", icon: "fab fa-apple", class: "ios", url: "https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973" },
+                    { name: "Android", icon: "fab fa-android", class: "android", url: "https://play.google.com/store/apps/details?id=com.happproxy" },
+                    { name: "Android APK", icon: "fab fa-android", class: "android", url: "https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" },
+                    { name: "Android Beta", icon: "fab fa-android", class: "android", url: "https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ_beta.apk" },
+                    { name: "Windows", icon: "fab fa-windows", class: "windows", url: "https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x86.exe" },
+                    { name: "Android TV", icon: "fas fa-tv", class: "tv", url: "https://play.google.com/store/apps/details?id=com.happproxy" },
+                    { name: "Apple TV", icon: "fas fa-tv", class: "tv", url: "https://apps.apple.com/us/app/happ-proxy-utility-for-tv/id6748297274" }
+                ]
+            },
+            hiddify: {
+                name: "Hiddify",
+                platforms: [
+                    { name: "Android", icon: "fab fa-android", class: "android", url: "https://github.com/hiddify/hiddify-next/releases/download/v1.5.2/Hiddify-Android-universal.apk" },
+                    { name: "Windows", icon: "fab fa-windows", class: "windows", url: "https://github.com/hiddify/hiddify-next/releases/download/v1.5.2/Hiddify-Windows-Setup-x64.Msix" },
+                    { name: "macOS", icon: "fab fa-apple", class: "macos", url: "https://github.com/hiddify/hiddify-next/releases/download/v1.5.2/Hiddify-MacOS.dmg" },
+                    { name: "Linux", icon: "fab fa-linux", class: "linux", url: "https://github.com/hiddify/hiddify-next/releases/download/v1.5.2/Hiddify-Linux-x64.AppImage" },
+                    { name: "iOS", icon: "fab fa-apple", class: "ios", url: "https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532" }
+                ]
+            }
+        };
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                initializeApp();
+            } catch (e) {
+                console.error('Error in initializeApp:', e);
+            }
+            
+            // Always run these functions regardless of user status
+            getUserIP();
+            checkConnectionStatus();
+            showWelcomePopup();
+        });
+
+        function initializeApp() {
+            // Format data usage text
+            document.querySelectorAll(".data-usage-text").forEach(el => {
+                el.innerHTML = el.innerHTML
+                    .replace(/\bB\b/g, "بایت")
+                    .replace(/\bKB\b/g, "کیلوبایت")
+                    .replace(/\bMB\b/g, "مگابایت")
+                    .replace(/\bGB\b/g, "گیگابایت")
+                    .replace(/\bTB\b/g, "ترابایت")
+                    .replace(/\bPB\b/g, "پتابایت");
+            });
+
+            // Set expiration time
+            setExpirationTime();
+
+            // Display servers - this should work for all users
+            displayServers();
+        }
+
+        function setExpirationTime() {
+            const expirationValue = document.getElementById('expirationValue');
+            const expireDate = document.getElementById('expireDate');
+            
+            if (userExpire && userExpire > 0) {
+                expirationValue.textContent = getTimeLeft(userExpire);
+                if (userStatus !== 'expired') {
+                    expireDate.textContent = 'انقضا: ' + formatDateTime(userExpire);
+                }
+            } else {
+                expirationValue.textContent = 'نامحدود';
+                if (expireDate) expireDate.style.display = 'none';
+            }
+        }
+
+        function getTimeLeft(expireTimestamp) {
+            if (!expireTimestamp || expireTimestamp <= 0) return 'نامحدود';
+
+            const now = Math.floor(Date.now() / 1000);
+            const timeLeft = expireTimestamp - now;
+
+            if (timeLeft <= 0) return 'منقضی شده';
+
+            const days = Math.floor(timeLeft / 86400);
+            const hours = Math.floor((timeLeft % 86400) / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+
+            if (days > 0) return `${days} روز`;
+            if (hours > 0) return `${hours} ساعت`;
+            if (minutes > 0) return `${minutes} دقیقه`;
+            return 'کمتر از ۱ دقیقه';
+        }
+
+        function formatDateTime(timestamp) {
+            if (!timestamp || timestamp <= 0) return '';
+            const date = new Date(timestamp * 1000);
+            return date.toLocaleDateString('fa-IR');
+        }
+
+        function displayServers() {
+            const proxyList = document.getElementById('proxyList');
+            
+            // Check if userLinks is valid
+            if (!userLinks || !Array.isArray(userLinks)) {
+                console.error('userLinks is not valid:', userLinks);
+                proxyList.innerHTML = '<div class="server-item"><div class="server-details"><div class="server-name">خطا در دریافت سرورها</div></div></div>';
+                return;
+            }
+            
+            // Filter valid links
+            const validLinks = userLinks.filter(link => link && link !== 'False');
+            
+            if (validLinks.length === 0) {
+                proxyList.innerHTML = '<div class="server-item"><div class="server-details"><div class="server-name">هیچ سروری موجود نیست</div></div></div>';
+                return;
+            }
+            
+            // Add Copy All button
+            const copyAllButton = document.createElement('div');
+            copyAllButton.className = 'copy-all-button';
+            copyAllButton.innerHTML = `
+                <div class="copy-all-content">
+                    <div class="copy-all-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <div class="copy-all-details">
+                        <div class="copy-all-title">کپی تمام سرورها</div>
+                        <div class="copy-all-subtitle">${validLinks.length} سرور</div>
+                    </div>
+                </div>
+            `;
+            copyAllButton.addEventListener('click', function() {
+                copyTextToClipboard(validLinks.join('\n'));
+                showCopyFeedback(`✓ ${validLinks.length} سرور کپی شد!`);
+                this.classList.add('copy-success');
+                setTimeout(() => {
+                    this.classList.remove('copy-success');
+                }, 500);
+            });
+            proxyList.appendChild(copyAllButton);
+            
+            // Add server items
+            validLinks.forEach(link => {
+                const name = getProxyName(link);
+                if (name) {
+                    const serverItem = document.createElement('div');
+                    serverItem.className = 'server-item';
+                    serverItem.innerHTML = `
+                        <div class="server-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="server-details">
+                            <div class="server-name">${name}</div>
+                            <div class="server-info">برای کپی کلیک کنید</div>
+                        </div>
+                    `;
+                    
+                    // Added data-link attribute to store the link
+                    serverItem.setAttribute('data-link', link);
+                    
+                    serverItem.addEventListener('click', function() {
+                        const linkToCopy = this.getAttribute('data-link');
+                        console.log('Copying link:', linkToCopy);
+                        
+                        copyTextToClipboard(linkToCopy);
+                        showCopyFeedback('✓ کپی شد!');
+                        this.classList.add('copy-success');
+                        setTimeout(() => {
+                            this.classList.remove('copy-success');
+                        }, 500);
+                    });
+                    proxyList.appendChild(serverItem);
+                }
+            });
+        }
+
+        function getProxyName(link) {
+            if (!link || link === 'False') return null;
+
+            try {
+                if (link.startsWith('vmess://')) {
+                    const base64Data = link.replace('vmess://', '');
+                    const decodedData = atob(base64Data);
+                    const config = JSON.parse(decodedData);
+                    return config.ps || 'Unknown';
+                }
+
+                const hashIndex = link.indexOf('#');
+                if (hashIndex !== -1) {
+                    return decodeURIComponent(link.substring(hashIndex + 1));
+                }
+
+                return 'Unknown';
+            } catch (e) {
+                console.error('Error parsing proxy name:', e);
+                return 'Unknown';
+            }
+        }
+
+        // Get User IP and Location
+        function getUserIP() {
+            const ipElement = document.getElementById('currentIP');
+            const locationElement = document.getElementById('ipLocation');
+            
+            if (!ipElement || !locationElement) return;
+            
+            ipElement.textContent = 'در حال دریافت...';
+            locationElement.textContent = 'در حال دریافت...';
+            
+            // Try to get IP from ipify
+            fetch('https://api.ipify.org?format=json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    ipElement.textContent = data.ip;
+                    
+                    // Try to get location info
+                    return fetch(`https://ipapi.co/${data.ip}/json/`);
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Location response was not ok');
+                    return response.json();
+                })
+                .then(locationData => {
+                    if (locationData.country_name && locationData.city) {
+                        locationElement.textContent = `${locationData.city}, ${locationData.country_name}`;
+                    } else if (locationData.country_name) {
+                        locationElement.textContent = locationData.country_name;
+                    } else {
+                        locationElement.textContent = 'نامشخص';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error getting IP location:', error);
+                    locationElement.textContent = 'نامشخص';
+                })
+                .catch(error => {
+                    console.error('Error getting IP:', error);
+                    ipElement.textContent = 'خطا';
+                    locationElement.textContent = 'خطا';
+                });
+        }
+
+        // Check Connection Status
+        function checkConnectionStatus() {
+            const statusElement = document.getElementById('connectionStatus');
+            const typeElement = document.getElementById('connectionType');
+            
+            if (!statusElement || !typeElement) return;
+            
+            statusElement.textContent = 'در حال بررسی...';
+            typeElement.textContent = 'در حال بررسی...';
+            
+            // Check if navigator.connection is available
+            if (navigator.connection) {
+                const connection = navigator.connection;
+                
+                // Determine connection status
+                if (connection.effectiveType) {
+                    let statusText = '';
+                    switch (connection.effectiveType) {
+                        case '4g': statusText = 'عالی (4G)'; break;
+                        case '3g': statusText = 'خوب (3G)'; break;
+                        case '2g': statusText = 'ضعیف (2G)'; break;
+                        case 'slow-2g': statusText = 'بسیار ضعیف'; break;
+                        default: statusText = 'ناشناخته'; break;
+                    }
+                    statusElement.textContent = statusText;
+                } else {
+                    statusElement.textContent = 'ناشناخته';
+                }
+                
+                // Get connection type
+                if (connection.type) {
+                    typeElement.textContent = connection.type;
+                } else if (connection.effectiveType) {
+                    typeElement.textContent = connection.effectiveType.toUpperCase();
+                } else {
+                    typeElement.textContent = 'ناشناخته';
+                }
+                
+                // Listen for connection changes
+                connection.addEventListener('change', function() {
+                    checkConnectionStatus();
+                });
+            } else {
+                // Fallback: Check online status
+                if (navigator.onLine) {
+                    statusElement.textContent = 'متصل';
+                    typeElement.textContent = 'آنلاین';
+                } else {
+                    statusElement.textContent = 'قطع';
+                    typeElement.textContent = 'آفلاین';
+                }
+                
+                // Listen for online/offline events
+                window.addEventListener('online', function() {
+                    statusElement.textContent = 'متصل';
+                    typeElement.textContent = 'آنلاین';
+                });
+                
+                window.addEventListener('offline', function() {
+                    statusElement.textContent = 'قطع';
+                    typeElement.textContent = 'آفلاین';
+                });
+            }
+        }
+
+        // Speed Test Functions
+        function runSpeedTest() {
+            const speedTestBtn = document.getElementById('speedTestBtn');
+            const downloadSpeedEl = document.getElementById('downloadSpeed');
+            const uploadSpeedEl = document.getElementById('uploadSpeed');
+            const statusEl = document.getElementById('speedTestStatus');
+            
+            if (!speedTestBtn || !downloadSpeedEl || !uploadSpeedEl || !statusEl) return;
+            
+            // Show loading state
+            speedTestBtn.disabled = true;
+            speedTestBtn.classList.add('loading');
+            speedTestBtn.innerHTML = '<i class="fas fa-spinner"></i> در حال تست...';
+            downloadSpeedEl.textContent = '--';
+            uploadSpeedEl.textContent = '--';
+            downloadSpeedEl.className = 'speed-result-value';
+            uploadSpeedEl.className = 'speed-result-value';
+            statusEl.textContent = 'در حال تست سرعت دانلود...';
+
+            // Use a real speed test approach
+            const downloadTest = testDownloadSpeed();
+            const uploadTest = testUploadSpeed();
+
+            // Run tests sequentially
+            downloadTest
+                .then(downloadSpeed => {
+                    downloadSpeedEl.textContent = downloadSpeed.toFixed(2);
+                    downloadSpeedEl.className = `speed-result-value ${getSpeedClass(downloadSpeed)}`;
+                    statusEl.textContent = 'در حال تست سرعت آپلود...';
+                    
+                    return uploadTest;
+                })
+                .then(uploadSpeed => {
+                    uploadSpeedEl.textContent = uploadSpeed.toFixed(2);
+                    uploadSpeedEl.className = `speed-result-value ${getSpeedClass(uploadSpeed)}`;
+                    
+                    // Reset button
+                    speedTestBtn.disabled = false;
+                    speedTestBtn.classList.remove('loading');
+                    speedTestBtn.innerHTML = '<i class="fas fa-redo"></i> تست مجدد';
+                    statusEl.textContent = 'تست کامل شد';
+                })
+                .catch(error => {
+                    console.error('Speed test error:', error);
+                    downloadSpeedEl.textContent = 'خطا';
+                    uploadSpeedEl.textContent = 'خطا';
+                    downloadSpeedEl.className = 'speed-result-value bad';
+                    uploadSpeedEl.className = 'speed-result-value bad';
+                    
+                    // Reset button
+                    speedTestBtn.disabled = false;
+                    speedTestBtn.classList.remove('loading');
+                    speedTestBtn.innerHTML = '<i class="fas fa-redo"></i> تست مجدد';
+                    statusEl.textContent = 'خطا در تست: ' + error.message;
+                });
+        }
+
+        function testDownloadSpeed() {
+            return new Promise((resolve, reject) => {
+                const startTime = performance.now();
+                const timeout = 15000; // 15 seconds timeout
+                let timeoutReached = false;
+                
+                const timeoutId = setTimeout(() => {
+                    timeoutReached = true;
+                    reject(new Error('تایم‌اوت در تست دانلود'));
+                }, timeout);
+                
+                // Use a reliable test file from a fast CDN
+                const testUrl = 'https://speed.cloudflare.com/__down?bytes=10000000'; // 10MB file
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', testUrl, true);
+                xhr.responseType = 'arraybuffer';
+                
+                xhr.onprogress = function(event) {
+                    if (timeoutReached) return;
+                    
+                    if (event.lengthComputable) {
+                        const endTime = performance.now();
+                        const duration = (endTime - startTime) / 1000; // in seconds
+                        const downloadedBytes = event.loaded;
+                        const speedBps = downloadedBytes * 8 / duration; // bits per second
+                        const speedMbps = speedBps / (1000 * 1000); // Mbps
+                        
+                        // We only need one measurement, so we can resolve early
+                        clearTimeout(timeoutId);
+                        resolve(speedMbps);
+                    }
+                };
+                
+                xhr.onload = function() {
+                    if (timeoutReached) return;
+                    clearTimeout(timeoutId);
+                    
+                    const endTime = performance.now();
+                    const duration = (endTime - startTime) / 1000; // in seconds
+                    const downloadedBytes = xhr.response.byteLength;
+                    const speedBps = downloadedBytes * 8 / duration; // bits per second
+                    const speedMbps = speedBps / (1000 * 1000); // Mbps
+                    
+                    resolve(speedMbps);
+                };
+                
+                xhr.onerror = function() {
+                    if (timeoutReached) return;
+                    clearTimeout(timeoutId);
+                    reject(new Error('خطا در دانلود فایل تست'));
+                };
+                
+                xhr.send();
+            });
+        }
+
+        function testUploadSpeed() {
+            return new Promise((resolve, reject) => {
+                const startTime = performance.now();
+                const timeout = 15000; // 15 seconds timeout
+                let timeoutReached = false;
+                
+                const timeoutId = setTimeout(() => {
+                    timeoutReached = true;
+                    reject(new Error('تایم‌اوت در تست آپلود'));
+                }, timeout);
+                
+                // Create test data (1MB)
+                const testData = new Uint8Array(1000000);
+                for (let i = 0; i < testData.length; i++) {
+                    testData[i] = Math.floor(Math.random() * 256);
+                }
+                
+                const blob = new Blob([testData]);
+                
+                // Use a reliable test endpoint
+                const testUrl = 'https://httpbin.org/post';
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', testUrl, true);
+                xhr.upload.onprogress = function(event) {
+                    if (timeoutReached) return;
+                    
+                    if (event.lengthComputable && event.loaded > 0) {
+                        const endTime = performance.now();
+                        const duration = (endTime - startTime) / 1000; // in seconds
+                        const uploadedBytes = event.loaded;
+                        const speedBps = uploadedBytes * 8 / duration; // bits per second
+                        const speedMbps = speedBps / (1000 * 1000); // Mbps
+                        
+                        // We only need one measurement, so we can resolve early
+                        clearTimeout(timeoutId);
+                        resolve(speedMbps);
+                    }
+                };
+                
+                xhr.onload = function() {
+                    if (timeoutReached) return;
+                    clearTimeout(timeoutId);
+                    
+                    const endTime = performance.now();
+                    const duration = (endTime - startTime) / 1000; // in seconds
+                    const uploadedBytes = blob.size;
+                    const speedBps = uploadedBytes * 8 / duration; // bits per second
+                    const speedMbps = speedBps / (1000 * 1000); // Mbps
+                    
+                    resolve(speedMbps);
+                };
+                
+                xhr.onerror = function() {
+                    if (timeoutReached) return;
+                    clearTimeout(timeoutId);
+                    reject(new Error('خطا در آپلود فایل تست'));
+                };
+                
+                xhr.send(blob);
+            });
+        }
+
+        function getSpeedClass(speed) {
+            if (speed >= 100) return 'excellent';
+            if (speed >= 50) return 'good';
+            if (speed >= 20) return 'average';
+            if (speed >= 10) return 'poor';
+            return 'bad';
+        }
+
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        }
+
+        function copySubscriptionUrl() {
+            copyTextToClipboard(subscriptionUrl);
+            showCopyFeedback('✓ لینک اشتراک کپی شد!');
+            
+            const button = event.target.closest('.action-button');
+            if (button) {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            }
+        }
+
+        // Universal copy function
+        function copyTextToClipboard(text) {
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            textarea.style.pointerEvents = 'none';
+            document.body.appendChild(textarea);
+            
+            try {
+                // Select and copy the text
+                textarea.select();
+                const successful = document.execCommand('copy');
+                
+                if (!successful) {
+                    // Fallback to modern clipboard API
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(text);
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to copy text:', err);
+            } finally {
+                // Remove the temporary textarea
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // Show copy feedback
+        function showCopyFeedback(message = '✓ کپی شد!') {
+            // Remove existing feedback if any
+            const existingFeedback = document.querySelector('.copy-feedback');
+            if (existingFeedback) {
+                existingFeedback.remove();
+            }
+
+            // Create feedback element
+            const feedback = document.createElement('div');
+            feedback.className = 'copy-feedback';
+            feedback.innerHTML = `
+                <div class="copy-feedback-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div>${message}</div>
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            // Show feedback
+            setTimeout(() => {
+                feedback.classList.add('show');
+            }, 10);
+            
+            // Hide and remove feedback after 2 seconds
+            setTimeout(() => {
+                feedback.classList.add('hide');
+                setTimeout(() => {
+                    feedback.remove();
+                }, 300);
+            }, 2000);
+        }
+
+        // Username Copy Function
+        function copyUsername() {
+            const usernameElement = document.getElementById('usernameText');
+            const guideElement = document.getElementById('copyGuide');
+            
+            if (!usernameElement || !guideElement) return;
+            
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = usernameElement.textContent;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            textarea.style.pointerEvents = 'none';
+            document.body.appendChild(textarea);
+            
+            try {
+                // Select and copy the text
+                textarea.select();
+                const successful = document.execCommand('copy');
+                
+                if (!successful) {
+                    // Fallback to modern clipboard API
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(usernameElement.textContent);
+                    }
+                }
+                
+                // Show feedback
+                showCopyFeedback('✓ نام کاربری کپی شد!');
+                
+                // Update guide
+                guideElement.textContent = '✓ کپی شد!';
+                guideElement.classList.add('copied');
+                
+                // Reset guide after 2 seconds
+                setTimeout(() => {
+                    guideElement.textContent = 'برای کپی کلیک کنید';
+                    guideElement.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy username:', err);
+            } finally {
+                // Remove the temporary textarea
+                document.body.removeChild(textarea);
+            }
+        }
+
+        // App Links Modal Functions
+        function showAppLinks(appKey) {
+            const modal = document.getElementById('appLinksModal');
+            const title = document.getElementById('appLinksTitle');
+            const grid = document.getElementById('appLinksGrid');
+            
+            // Clear previous content
+            grid.innerHTML = '';
+            
+            // Set title
+            title.textContent = `دانلود ${appLinks[appKey].name}`;
+            
+            // Add platform links
+            appLinks[appKey].platforms.forEach(platform => {
+                const item = document.createElement('div');
+                item.className = 'app-link-item';
+                
+                // Use logo for Happ and Hiddify, otherwise use icon
+                if (appKey === 'happ' || appKey === 'hiddify') {
+                    item.innerHTML = `
+                        <div class="app-link-icon ${appKey}"></div>
+                        <div class="app-link-name">${platform.name}</div>
+                    `;
+                } else {
+                    item.innerHTML = `
+                        <div class="app-link-icon ${platform.class}">
+                            <i class="${platform.icon}"></i>
+                        </div>
+                        <div class="app-link-name">${platform.name}</div>
+                    `;
+                }
+                
+                item.addEventListener('click', () => {
+                    window.open(platform.url, '_blank');
+                });
+                grid.appendChild(item);
+            });
+            
+            // Show modal
+            modal.classList.add('active');
+        }
+
+        function hideAppLinks() {
+            const modal = document.getElementById('appLinksModal');
+            modal.classList.remove('active');
+        }
+
+        // Welcome Popup Functions
+        function showWelcomePopup() {
+            const welcomePopup = document.getElementById('welcomePopup');
+            if (!welcomePopup) return;
+            
+            // Show the popup after a short delay
+            setTimeout(() => {
+                welcomePopup.classList.add('show');
+                
+                // Hide the popup after 5 seconds
+                setTimeout(() => {
+                    hideWelcomePopup();
+                }, 5000);
+            }, 500);
+        }
+
+        function hideWelcomePopup() {
+            const welcomePopup = document.getElementById('welcomePopup');
+            if (!welcomePopup) return;
+            
+            welcomePopup.classList.remove('show');
+            welcomePopup.classList.add('hide');
+            
+            // Remove the popup from DOM after animation completes
+            setTimeout(() => {
+                welcomePopup.style.display = 'none';
+            }, 500);
+        }
+
+        function showQRCode(text) {
+            const modal = document.getElementById('qrModal');
+            const qrcodeDiv = document.getElementById('qrcode');
+            if (!modal || !qrcodeDiv) return;
+            
+            qrcodeDiv.innerHTML = '';
+
+            new QRCode(qrcodeDiv, {
+                text: text,
+                width: 200,
+                height: 200,
+                colorDark: "#FFFFFF",
+                colorLight: "#00000000",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            modal.classList.add('active');
+        }
+
+        function hideQRCode() {
+            const modal = document.getElementById('qrModal');
+            if (!modal) return;
+            
+            modal.classList.remove('active');
+        }
+
+        function openSupport() {
+            if (SupportID) {
+                window.open(SupportID);
+            } else {
+                alert('لینک پشتیبانی تنظیم نشده است');
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const qrModal = document.getElementById('qrModal');
+            const appLinksModal = document.getElementById('appLinksModal');
+            
+            if (qrModal && event.target === qrModal) {
+                hideQRCode();
+            }
+            
+            if (appLinksModal && event.target === appLinksModal) {
+                hideAppLinks();
+            }
+        }
+
+        // Add event listener for username container after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameContainer = document.getElementById('usernameContainer');
+            if (usernameContainer) {
+                usernameContainer.addEventListener('click', copyUsername);
+            }
+        });
+    </script>
+</body>
+</html>
