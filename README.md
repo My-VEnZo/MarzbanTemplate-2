@@ -1,7 +1,7 @@
 <h1 align="center">🎨 تمپلیت برای پنل <a href="https://github.com/Gozargah/Marzban" target="_blank">مرزبان</a></h1>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/My-VEnZo/MarzbanTemplate-1/refs/heads/main/template.png" alt="Marzban Template" style="width: 100%; height: auto;">
+  <img src="https://raw.githubusercontent.com/My-VEnZo/MarzbanTemplate-2/refs/heads/main/template.png" alt="Marzban Template" style="width: 100%; height: auto;">
 </p>
 
 <hr>
@@ -17,7 +17,7 @@
 
 ### 1. دانلود فایل تمپلیت:
 ```bash
-sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/My-VEnZo/MarzbanTemplate-1/main/index.html
+sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/My-VEnZo/MarzbanTemplate-2/main/index.html
 ```
 
 ### 2. افزودن تنظیمات مسیر به فایل `.env`:
@@ -34,4 +34,3 @@ marzban restart
 <hr>
 
 ## 🙏 تشکر  
-با تشکر از [@yousefbn783](https://github.com/yousefbn783) بابت کمک در توسعه این پروژه.
